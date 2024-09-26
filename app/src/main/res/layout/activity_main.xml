@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tv_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:text="entrada"
+        android:textAlignment="textEnd"
+        android:textColor="@color/white"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_output"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:text="saída"
+        android:textAlignment="textEnd"
+        android:textColor="@color/gray"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_input" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mtb_clean"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/button_background"
+        android:clickable="true"
+        android:padding="2dp"
+        android:text="C"
+        android:textColor="@color/red"
+        android:textSize="26sp"
+        app:backgroundTint="@color/gray_dark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_output" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mtb_para2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/button_background"
+        android:padding="2dp"
+        android:text="+/-"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        app:backgroundTint="@color/gray_dark"
+        app:layout_constraintStart_toEndOf="@id/mtb_clean"
+        app:layout_constraintTop_toBottomOf="@id/tv_output" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mtb_para1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/button_background"
+        android:padding="2dp"
+        android:text="%"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        app:backgroundTint="@color/gray_dark"
+        app:layout_constraintStart_toEndOf="@id/mtb_para2"
+        app:layout_constraintTop_toBottomOf="@id/tv_output" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mtb_divide"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/button_background"
+        android:padding="2dp"
+        android:text="/"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        app:backgroundTint="@color/gray_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mtb_para1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_output" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mtb_seven"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_background"
+        android:clickable="true"
+        android:padding="2dp"
+        android:text="7"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        app:backgroundTint="@color/gray_dark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mtb_clean" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mtb_eight"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_background"
+        android:clickable="true"
+        android:padding="2dp"
+        android:text="8"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        app:backgroundTint="@color/gray_dark"
+        app:layout_constraintStart_toEndOf="@id/mtb_seven"
+        app:layout_constraintTop_toBottomOf="@id/mtb_para2" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mtb_nine"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_background"
+        android:clickable="true"
+        android:padding="2dp"
+        android:text="9"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        app:backgroundTint="@color/gray_dark"
+        app:layout_constraintStart_toEndOf="@id/mtb_eight"
+        app:layout_constraintTop_toBottomOf="@id/mtb_para1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mtb_multi"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/button_background"
+        android:clickable="true"
+        android:padding="2dp"
+        android:text="*"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        app:backgroundTint="@color/gray_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/mtb_nine"
+        app:layout_constraintTop_toBottomOf="@id/mtb_divide" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
