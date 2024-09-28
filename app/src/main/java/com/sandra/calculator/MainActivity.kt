@@ -1,6 +1,7 @@
 package com.sandra.calculator
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +12,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var outputTextView: TextView
 
     private var input: String = ""
-    private var opera: String = ""
+    private var operator: String = ""
     private var oparaOne: Double = 0.0
     private var oparaTwo: Double = 0.0
 
@@ -43,5 +44,99 @@ class MainActivity : AppCompatActivity() {
             findViewById(R.id.mtb_equals),
             findViewById(R.id.mtb_dot)
         )
+
+        buttons.forEach { buttons ->
+            buttons.setOnClickListener(View.OnClickListener {
+                handleButtonClick(buttons.text.toString())// é chamado com o texto do botão como argumento.
+            })
+        }
+
     }
+
+    private fun appendInput(value: String) {
+        input += value
+        inputTextView.text = input
+        //acrescenta a string fornecida a string de entrada
+        //e exibe a entrada atualizada
+    }
+
+    private fun appendDecimal() {
+        if (!input.contains(".")) {
+            input += "."
+            inputTextView.text = input
+        }
+    }
+
+    private fun handleOperator(op: String) {
+        operator = op
+        oparaOne = input.toDouble()
+        input = ""
+        inputTextView.text = ""
+    }
+
+    private fun calculateResult() {
+        if (input.isNotEmpty()) {
+            oparaTwo = input.toDouble()
+            val result = when (operator) {
+                "+" -> oparaOne + oparaTwo
+                "-" -> oparaOne - oparaTwo
+                "x" -> oparaOne * oparaTwo
+                "/" -> oparaOne / oparaTwo
+                else -> throw IllegalStateException("Invalid operation!")
+            }
+            outputTextView.text = result.toString()
+            input = result.toString()
+            inputTextView.text = input
+        }
+    }
+
+    private fun clearInput() {
+        input = ""
+        oparaOne = 0.0
+        oparaTwo = 0.0
+        operator = ""
+        inputTextView.text = ""
+        outputTextView.text = ""
+    }
+
+    private fun handlePercentage() {
+        if (input.isNotEmpty()) {
+            val value = input.toDouble() / 100
+            input = value.toString()
+            inputTextView.text = input
+        }
+    }
+
+    private fun toggleSign() {
+        //altera o sinal do número
+        if (input.isNotEmpty() && input != "0") {
+            val value = input.toDouble() * -1
+            input = value.toString()
+            inputTextView.text = input
+        }
+    }
+
+    private fun String.isNumeric(): Boolean {
+        //verifica se a string representa um número
+        //isNumeric é definida como uma extensão da classe String
+        return try {
+            this.toDouble()
+            true
+        } catch (e: NumberFormatException) {
+            false
+        }
+    }
+
+    private fun handleButtonClick(value: String) {
+        when {
+            value.isNumeric() -> appendInput(value)
+            value == "." -> appendDecimal()
+            value in setOf("+", "-", "x", "/") -> handleOperator(value)
+            value == "=" -> calculateResult()
+            value == "C" -> clearInput()
+            value == "%" -> handlePercentage()
+            value == "+/-" -> toggleSign()
+        }
+    }
+
 }
